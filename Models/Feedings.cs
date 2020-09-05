@@ -1,9 +1,11 @@
+using System;
+
 namespace TamogotchiAPI.Models
 {
-    public class Feedings
+    public class Feeding
     {
         public int Id { get; set; }
         public DateTime When { get; set; }
-        public int PetId { get; set; }
+        public PetId petId { get; set; }
     }
 }

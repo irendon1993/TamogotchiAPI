@@ -1,8 +1,10 @@
-namespace TamogotchiAPI.Modelspl
+using System;
+
+namespace TamogotchiAPI.Models
 {
-    public class pets
+    public class Pet
     {
-        public int Id { get; set; }
+        public int PetId { get; set; }
         public string Name { get; set; }
         public DateTime Birthday { get; set; }
 
