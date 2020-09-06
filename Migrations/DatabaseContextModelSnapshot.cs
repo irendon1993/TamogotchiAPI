@@ -39,7 +39,7 @@ namespace TamogotchiAPI.Migrations
 
             modelBuilder.Entity("TamogotchiAPI.Models.Pet", b =>
                 {
-                    b.Property<int>("Id")
+                    b.Property<int>("PetId")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("integer")
                         .HasAnnotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn);
@@ -56,7 +56,7 @@ namespace TamogotchiAPI.Migrations
                     b.Property<string>("Name")
                         .HasColumnType("text");
 
-                    b.HasKey("Id");
+                    b.HasKey("PetId");
 
                     b.ToTable("Pets");
                 });

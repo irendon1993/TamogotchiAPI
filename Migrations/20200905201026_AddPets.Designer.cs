@@ -10,7 +10,7 @@ using TamogotchiAPI.Models;
 namespace TamogotchiAPI.Migrations
 {
     [DbContext(typeof(DatabaseContext))]
-    [Migration("20200905154333_AddPets")]
+    [Migration("20200905201026_AddPets")]
     partial class AddPets
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -41,7 +41,7 @@ namespace TamogotchiAPI.Migrations
 
             modelBuilder.Entity("TamogotchiAPI.Models.Pet", b =>
                 {
-                    b.Property<int>("Id")
+                    b.Property<int>("PetId")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("integer")
                         .HasAnnotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn);
@@ -58,7 +58,7 @@ namespace TamogotchiAPI.Migrations
                     b.Property<string>("Name")
                         .HasColumnType("text");
 
-                    b.HasKey("Id");
+                    b.HasKey("PetId");
 
                     b.ToTable("Pets");
                 });

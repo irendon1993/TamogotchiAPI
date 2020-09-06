@@ -44,7 +44,7 @@ namespace TamogotchiAPI.Controllers
             return pet;
         }
 
-        [HttpPost("/Create_new_pet")]
+        [HttpPost("/CreatePet")]
         public async Task<ActionResult<Pet>> PostNewPetAsync(Pet petToCreate)
         {
             petToCreate.Birthday = DateTime.Now;
@@ -62,7 +62,7 @@ namespace TamogotchiAPI.Controllers
         [HttpDelete("{petId}")]
         public async Task<ActionResult<Pet>> DeletePetByIdAsync(int petId)
         {
-            var pet = await FindAsync(petId);
+            var pet = await _context.Pets.FindAsync(petId);
 
             if (pet == null)
             {
@@ -78,7 +78,7 @@ namespace TamogotchiAPI.Controllers
         [HttpPost("{petId}/Playtime")]
         public async Task<ActionResult<Pet>> PostPlayPetByIdAsync(int petId, Playtime playtime)
         {
-            var pet = await FindAsync(PetId);
+            var pet = await _context.Pets.FindAsync(petId);
 
             if (pet == null)
             {
@@ -86,7 +86,9 @@ namespace TamogotchiAPI.Controllers
             }
 
             playtime.When = DateTime.Now;
-            playtime.PetId = pet.petId;
+            playtime.PetId = pet.PetId;
+            _context.Playtimes.Add(playtime);
+
 
             pet.HappinessLevel += 5;
             pet.HungerLevel += 3;
@@ -98,7 +100,7 @@ namespace TamogotchiAPI.Controllers
         [HttpPost("{petId}/Feeding")]
         public async Task<ActionResult<Pet>> PostFeedPetByIdAsync(int petId, Feeding feeding)
         {
-            var pet = await FindAsync(PetId);
+            var pet = await _context.Pets.FindAsync(petId);
 
             if (pet == null)
             {
@@ -106,7 +108,8 @@ namespace TamogotchiAPI.Controllers
             }
 
             feeding.When = DateTime.Now;
-            feeding.PetId = pet.petId;
+            feeding.PetId = pet.PetId;
+            _context.Feedings.Add(feeding);
 
             pet.HappinessLevel += 3;
             pet.HungerLevel -= 5;
@@ -118,7 +121,7 @@ namespace TamogotchiAPI.Controllers
         [HttpPost("{petId}/Scolding")]
         public async Task<ActionResult<Pet>> PostScoldPetByIdAsync(int petId, Scolding scolding)
         {
-            var pet = await FindAsync(petId);
+            var pet = await _context.Pets.FindAsync(petId);
 
             if (pet == null)
             {
@@ -126,7 +129,8 @@ namespace TamogotchiAPI.Controllers
             }
 
             scolding.When = DateTime.Now;
-            scolding.PetId = pet.petId;
+            scolding.PetId = pet.PetId;
+            _context.Scoldings.Add(scolding);
 
             pet.HappinessLevel -= 5;
 

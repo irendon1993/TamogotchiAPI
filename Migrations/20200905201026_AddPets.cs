@@ -35,7 +35,7 @@ namespace TamogotchiAPI.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Pets", x => x.Id);
+                    table.PrimaryKey("PK_Pets", x => x.PetId);
                 });
 
             migrationBuilder.CreateTable(
