@@ -20,13 +20,9 @@ namespace TamogotchiAPI.Controllers
             _context = context;
         }
 
-        private async Task<Pet> FindAsync(int petId)
-        {
-            return await _context.Pets.FirstOrDefaultAsync(pet => pet.PetId == petId);
-        }
 
         [HttpGet]
-        private async Task<ActionResult<IEnumerable<Pet>>> GetPets()
+        public async Task<ActionResult<IEnumerable<Pet>>> GetPets()
         {
             return await _context.Pets.OrderBy(row => row.PetId).ToListAsync();
         }
